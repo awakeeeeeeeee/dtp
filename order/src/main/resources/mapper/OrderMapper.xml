@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.steven.order.mapper.OrderMapper">
+
+
+
+
+    <select id="selectOrder" resultType="com.steven.order.pojo.Order">
+
+        select * from order where userid = #{userid}
+
+    </select>
+
+    <update id="updateScore" parameterType="com.steven.order.pojo.Order">
+
+        update order set score = #{score} where userid = #{userid}
+
+    </update>
+
+
+    <insert id="save" parameterType="com.steven.order.pojo.Order">
+
+        insert into order(userid,score) values (#{order.userId},#{order.score})
+
+    </insert>
+
+</mapper>
