@@ -2,7 +2,7 @@ package com.steven.order.controller;
 
 
 import com.steven.order.mapper.OrderMapper;
-import com.steven.order.pojo.Order;
+import com.steven.order.pojo.Orders;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,10 +22,16 @@ public class OrderController {
     @PostMapping("/addScore")
     String addScore(String userId){
 
-        Order order = orderMapper.selectOrder(userId);
-        order.setScore(order.getScore().add(new BigDecimal(100)));
-
-        orderMapper.updateScore(order);
+        Orders order = orderMapper.selectOrder(userId);
+        if(order == null){
+            order = new Orders();
+            order.setUserId(userId);
+            order.setScore(new BigDecimal(100));
+            orderMapper.save(order);
+        }else {
+            order.setScore(order.getScore().add(new BigDecimal(100)));
+            orderMapper.updateScore(order);
+        }
 
         return "success";
     }

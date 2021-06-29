@@ -7,7 +7,7 @@
 
     <insert id="save" parameterType="com.steven.customer.pojo.Customer">
 
-        insert into order(userid,score) values (#{order.userId},#{order.score})
+        insert into customer(id,name) values (#{customer.id},#{customer.name})
 
     </insert>
 

@@ -5,22 +5,22 @@
 
 
 
-    <select id="selectOrder" resultType="com.steven.order.pojo.Order">
+    <select id="selectOrder" resultType="com.steven.order.pojo.Orders">
 
-        select * from order where userid = #{userid}
+        select * from orders where userid = #{userid}
 
     </select>
 
-    <update id="updateScore" parameterType="com.steven.order.pojo.Order">
+    <update id="updateScore" parameterType="com.steven.order.pojo.Orders">
 
-        update order set score = #{score} where userid = #{userid}
+        update orders set score = #{score} where userid = #{userid}
 
     </update>
 
 
-    <insert id="save" parameterType="com.steven.order.pojo.Order">
+    <insert id="save" parameterType="com.steven.order.pojo.Orders">
 
-        insert into order(userid,score) values (#{order.userId},#{order.score})
+        insert into orders(userid,score) values (#{order.userId},#{order.score})
 
     </insert>
 
